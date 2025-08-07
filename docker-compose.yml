@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  cbw-task-ms:
+    build: ./cbw-task-ms
+    container_name: cbw-task-ms
+    ports:
+      - "${TASK_MS_PORT}:${TASK_MS_PORT}"
+    depends_on:
+      - mongo
+      - redis
+      - nats
+    environment:
+      - PORT=${TASK_MS_PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
+    restart: always
+
+  client-gateway:
+    build: ./client-gateway
+    container_name: client-gateway
+    ports:
+      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+    depends_on:
+      - nats
+    environment:
+      - PORT=${GATEWAY_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
+    restart: always
+
+  mongo:
+    image: mongo:7
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  nats:
+    image: nats:latest
+    container_name: nats
+    ports:
+      - "4222:4222"
+    restart: always
+
+volumes:
+  mongo-data:
