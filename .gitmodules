@@ -4,3 +4,6 @@
 [submodule "cbw-task-ms"]
 	path = cbw-task-ms
 	url = https://github.com/cbw-microservices/cbw-task-ms.git
+[submodule "auth-ms"]
+	path = auth-ms
+	url = https://github.com/cbw-microservices/auth-ms.git
