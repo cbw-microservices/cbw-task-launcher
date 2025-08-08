@@ -4,8 +4,6 @@ services:
   cbw-task-ms:
     build: ./cbw-task-ms
     container_name: cbw-task-ms
-    ports:
-      - "${TASK_MS_PORT}:${TASK_MS_PORT}"
     depends_on:
       - mongo
       - redis
@@ -30,6 +28,19 @@ services:
       - NATS_SERVERS=${NATS_SERVERS}
     restart: always
 
+  auth-ms:
+    build: ./auth-ms
+    container_name: auth-ms
+    depends_on:
+      - mongo-init-replica
+      - nats
+    environment:
+      - PORT=${AUTH_MS_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - DATABASE_URL=${AUTH_DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+    restart: always
+
   mongo:
     image: mongo:7
     container_name: mongo
@@ -37,7 +48,23 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    command: ["--replSet", "rs0"]
     restart: always
+
+  mongo-init-replica:
+    image: mongo:7
+    depends_on:
+      - mongo
+    entrypoint: >
+      bash -c "
+        sleep 5 &&
+        mongosh --host mongo:27017 --eval '
+          rs.initiate({
+            _id: \"rs0\",
+            members: [{ _id: 0, host: \"mongo:27017\" }]
+          })
+        '
+      "
 
   redis:
     image: redis:7-alpine
