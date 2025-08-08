@@ -1,7 +1,10 @@
 # CBW - TASKS
 Este Repositorio contiene autenticacion en las rutas , primero toca loguarse y enviar el token por auth como un bearer token
 
-Se dejan las colecciones de postman y insomnia para probar la api
+Se dejan las colecciones de postman e insomnia para probar la api
+
+La url de swagger : http://localhost:3000/api/docs
+Nota: Por temas de tiempo solo esta en swagger documentado el auth , pero se envian las colecciones de postman e insomnia
 ## Dev
 
 1. Clonar el repositorio
