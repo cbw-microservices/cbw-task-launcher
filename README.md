@@ -3,7 +3,7 @@ Este Repositorio contiene autenticacion en las rutas , primero toca loguarse y e
 
 Se dejan las colecciones de postman e insomnia para probar la api
 
-La url de swagger : http://localhost:3000/api/docs -  http://localhost:<port>/api/docs
+La url de swagger : http://localhost:3000/api/docs -  http://localhost:port/api/docs
 Nota: Por temas de tiempo solo esta en swagger documentado el auth , pero se envian las colecciones de postman e insomnia
 ## Dev
 
