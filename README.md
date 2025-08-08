@@ -1,7 +1,22 @@
 # CBW - TASKS
-Este Repositorio contiene autenticacion en las rutas , primero toca loguarse y enviar el token por auth como un bearer token
+Microservicio de gestión de tareas desarrollado como parte de una prueba técnica. Permite crear tareas, consultarlas, actualizarlas, eliminarlas, filtrarlas por estado y programar acciones asíncronas mediante una cola de trabajos.
+
+Este Repositorio contiene autenticacion en las rutas , primero toca registrarse, loguarse y enviar el token por auth como un bearer token
 
 Se dejan las colecciones de postman e insomnia para probar la api
+
+  > Autor: **Luis Cortes**  
+## 🚀 Tecnologías utilizadas 
+
+  | Componente    | Descripción                      |
+  |---------------|----------------------------------|
+  | NestJS        | Framework backend (Node.js)      |
+  | MongoDB       | Base de datos                    |
+  | Redis         | Sistema de colas (Bull)          |
+  | Bull          | Gestión de trabajos asíncronos   |
+  | Docker        | Contenedores                     |
+  | Docker Compose| Orquestación de servicios        |
+
 
 La url de swagger : http://localhost:3000/api/docs -  http://localhost:PORT/api/docs
 Nota: Por temas de tiempo solo esta en swagger documentado el auth , pero se envian las colecciones de postman e insomnia
