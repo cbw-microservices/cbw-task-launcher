@@ -1,0 +1,399 @@
+type: collection.insomnia.rest/5.0
+name: Tasks
+meta:
+  id: wrk_fb6e3d58af4e48b2ad475169e75ce690
+  created: 1754426231560
+  modified: 1754429339347
+  description: ""
+collection:
+  - name: Auth
+    meta:
+      id: fld_e5c2a42e85b04d18bf365af220ba3fd3
+      created: 1754620791808
+      modified: 1754620791808
+      sortKey: -1754620791809
+      description: ""
+    children:
+      - url: http://localhost:3000/api/auth/register
+        name: register - User
+        meta:
+          id: req_ec2755be5a6e4766820b36f810d017fc
+          created: 1754616108235
+          modified: 1754620796611
+          isPrivate: false
+          description: ""
+          sortKey: -1754620796523
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Luis Cortes",
+            	"email":"luiscortes@mail.com",
+            	"password":"Abc12345."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/auth/login
+        name: Login - User
+        meta:
+          id: req_b6a92c6f7b5646d59d09335f77531e2c
+          created: 1754618107256
+          modified: 1754620800031
+          isPrivate: false
+          description: ""
+          sortKey: -1754620796623
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email":"luiscortes@mail.com",
+            	"password":"Abc12345."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/auth/verify
+        name: Token Verify - User
+        meta:
+          id: req_569371196854465f839f2ca08e5b4120
+          created: 1754618180446
+          modified: 1754621085687
+          isPrivate: false
+          description: ""
+          sortKey: -1754620796723
+        method: GET
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email":"luiscortes@mail.com",
+            	"password":"Abc12345."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Tasks
+    meta:
+      id: fld_cc564630a49747348c43b5ddc3de6d63
+      created: 1754620826684
+      modified: 1754620826684
+      sortKey: -1754620826685
+      description: ""
+    children:
+      - url: http://localhost:3000/api/tasks
+        name: new task
+        meta:
+          id: req_d69d1a05d3c84687a6a03addd29407e8
+          created: 1754426231608
+          modified: 1754621312625
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872774
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "title": "Tarea desde API GATEWAY",
+              "description": "Hacer las diapositivas del proyecto",
+              "status": "pending",
+              "assigned_to": "luiscortes",
+              "due_date": "2025-08-10"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks
+        name: Get All Tasks
+        meta:
+          id: req_07a65084f56e4f4cbe6f4c84ade23d70
+          created: 1754427375191
+          modified: 1754621169387
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872699
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks/6893c81c10ef66a88915050c
+        name: Get Task By ID
+        meta:
+          id: req_031765582c15426ca176ffb41590f58e
+          created: 1754427679235
+          modified: 1754621452582
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872686.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks/6893c81c10ef66a88915050d
+        name: Update task
+        meta:
+          id: req_558e78308f2c4eda8353d0bc1fb6ce5b
+          created: 1754427822185
+          modified: 1754621563268
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872574
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "title": "Actualizar título",
+              "description": "Nueva descripción",
+              "status": "in_progress",
+              "assigned_to": "maria.perez",
+              "due_date": "2025-09-01"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks/6893c81c10ef66a88915050d
+        name: Update task (PATCH)
+        meta:
+          id: req_4a0c2c32d6ee481a8b8322134b85f201
+          created: 1754429156613
+          modified: 1754621529626
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872674
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |
+            {
+              
+              "status": "pending"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks/status/pending
+        name: Get All Tasks By Status
+        meta:
+          id: req_3eaf2def8d3446eea5965b268beb99a8
+          created: 1754429640685
+          modified: 1754621491130
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872677.125
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks/68928b047025e29e2a1f2f01
+        name: Delete Task By ID
+        meta:
+          id: req_63efe1528a3841b489d94c4a894f53a1
+          created: 1754429922439
+          modified: 1754621595181
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872474
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks/68955f5324f33a39b62b241e/schedule
+        name: new task schedule
+        meta:
+          id: req_eb21b970a4634b148b6a26d5e2f7d57d
+          created: 1754432061227
+          modified: 1754621414825
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872724
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "runAt": "2025-08-06T22:00:00Z"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/tasks?page=1&limit=2
+        name: Get All Tasks - Paginator
+        meta:
+          id: req_c015af837c164ed8ac5a90599634120e
+          created: 1754439597227
+          modified: 1754621263102
+          isPrivate: false
+          description: ""
+          sortKey: -1754620872692.75
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_b6a92c6f7b5646d59d09335f77531e2c',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 3600 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_2ca90f8c77e5b8dc12dc330492d8b936e2a83efe
+    created: 1754426231564
+    modified: 1754426231564
+environments:
+  name: Base Environment
+  meta:
+    id: env_2ca90f8c77e5b8dc12dc330492d8b936e2a83efe
+    created: 1754426231563
+    modified: 1754426231563
+    isPrivate: false

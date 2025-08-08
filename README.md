@@ -1,4 +1,7 @@
 # CBW - TASKS
+Este Repositorio contiene autenticacion en las rutas , primero toca loguarse y enviar el token por auth como un bearer token
+
+Se dejan las colecciones de postman y insomnia para probar la api
 ## Dev
 
 1. Clonar el repositorio
