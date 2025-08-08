@@ -5,7 +5,7 @@ Se dejan las colecciones de postman y insomnia para probar la api
 ## Dev
 
 1. Clonar el repositorio
-2. Crear un .env basado en el .env.template
+2. Crear un .env basado en el .env.template (Se puede copiar y utilizar el mismo)
 3. Ejecutar el comando `git submodule update --init --recursive` para reconstruir los sub-módulos
 4. Ejecutar el comando `docker compose up --build`
 
